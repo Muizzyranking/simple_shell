@@ -2,11 +2,11 @@
 
 
 /**
- * tokenize - tokenizes a buffer with a delimiter
- * @buffer: buffer to tokenize
- * @delimiter: delimiter to tokenize along
+ * tokenize - the function that tokenizes a buffer with a delimiter
+ * @buffer: the buffer to tokenize
+ * @delimiter: the delimiter to tokenize along
  *
- * Return: pointer to an array of pointers to the tokens
+ * Return: a pointer to an array of pointers to the tokens
  */
 char **tokenize(char *buffer, char *delimiter)
 {
