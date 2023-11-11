@@ -34,9 +34,9 @@ typedef struct variables
 } vars_t;
 
 /**
- * struct builtins - struct for the builtin functions
- * @name: name of builtin command
- * @f: function for corresponding builtin
+ * struct builtins - the struct for the builtin functions
+ * @name: the name of the builtin command
+ * @f: the function for corresponding builtin
  */
 typedef struct builtins
 {
