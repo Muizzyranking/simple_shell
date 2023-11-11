@@ -1,1 +1,1 @@
-# fighters
+Love and Muizz simple shell project.
