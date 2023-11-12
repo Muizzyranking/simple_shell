@@ -1,4 +1,4 @@
-#include "shell.h"
+#include "main.h"
 
 /**
  * add_key - function that create a new environment variable
@@ -96,11 +96,11 @@ char *add_value(char *key, char *value)
 int _atoi(char *str)
 {
 	unsigned int i, digits;
-	int num = 0, num_test;
+	int num = 0, test;
 
-	num_test = INT_MAX;
-	for (digits = 0; num_test != 0; digits++)
-		num_test /= 10;
+	test = INT_MAX;
+	for (digits = 0; test != 0; digits++)
+		test /= 10;
 	for (i = 0; str[i] != '\0' && i < digits; i++)
 	{
 		num *= 10;
