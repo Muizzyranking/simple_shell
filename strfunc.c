@@ -1,7 +1,21 @@
-#include "shell.h"
+#include "main.h"
 
 /**
- * _puts - the function that writes a string to standard output
+ * _strlen - the function that checks the lenght of a string
+ * @str: the string
+ * Return: the length of string
+ */
+unsigned int _strlen(char *str)
+{
+	unsigned int len;
+
+	for (len = 0; str[len]; len++)
+		;
+	return (len);
+}
+
+/**
+ * _puts - writes a string to standard output
  * @str: the string to write
  *
  * Return: the number of chars printed or -1 on failure
@@ -21,33 +35,32 @@ ssize_t _puts(char *str)
 }
 
 /**
- * _strdup - the function that returns pointer to new mem alloc space which contains copy
+ * _strdup - duplicates a string
  * @strtodup: the string to be duplicated
  * Return: a pointer to the new duplicated string
  */
 char *_strdup(char *strtodup)
 {
-	char *copy;
+	char *strdup;
 
 	int len, i;
 
 	if (strtodup == 0)
 		return (NULL);
 
-	for (len = 0; strtodup[len]; len++)
-		;
-	copy = malloc((len + 1) * sizeof(char));
+	len = _strlen(strtodup);
+	strdup = malloc((len + 1) * sizeof(char));
 
 	for (i = 0; i <= len; i++)
-		copy[i] = strtodup[i];
+		strdup[i] = strtodup[i];
 
-	return (copy);
+	return (strdup);
 }
 
 /**
- * _strcmpr - the function that compares two strings
- * @strcmp1: the first string, of two, to be compared in length
- * @strcmp2: the second string, of two, to be compared
+ * _strcmpr - compares two strings
+ * @strcmp1: the first string to be compared in length
+ * @strcmp2: the second string to be compared
  * Return: 0 on success, anything else is a failure
  */
 int _strcmpr(char *strcmp1, char *strcmp2)
@@ -55,67 +68,52 @@ int _strcmpr(char *strcmp1, char *strcmp2)
 	int i;
 
 	i = 0;
-	while (strcmp1[i] == strcmp2[i])
+	for (i = 0; strcmp1[i] == strcmp2[i]; i++)
 	{
 		if (strcmp1[i] == '\0')
+		{	break;
 			return (0);
-		i++;
+		}
 	}
 	return (strcmp1[i] - strcmp2[i]);
 }
 
 /**
- * _strcat - the function that concatenates two strings
- * @strc1: the first string
- * @strc2: the second string
- * Return: a pointer
+ * _strcat - concatenates two strings
+ * @str1: the first string
+ * @str2: the second string
+ * Return: a pointer to the concatenated string
  */
-char *_strcat(char *strc1, char *strc2)
+char *_strcat(char *str1, char *str2)
 {
-	char *newstring;
-	unsigned int len1, len2, newlen, i, j;
+	char *strcat;
+	unsigned int len1, len2, len, i, j;
 
 	len1 = 0;
 	len2 = 0;
-	if (strc1 == NULL)
+	if (str1 == NULL)
 		len1 = 0;
 	else
 	{
-		for (len1 = 0; strc1[len1]; len1++)
+		for (; str1[len1]; len1++)
 			;
 	}
-	if (strc2 == NULL)
+	if (str2 == NULL)
 		len2 = 0;
 	else
 	{
-		for (len2 = 0; strc2[len2]; len2++)
+		for (; str2[len2]; len2++)
 			;
 	}
-	newlen = len1 + len2 + 2;
-	newstring = malloc(newlen * sizeof(char));
-	if (newstring == NULL)
+	len = len1 + len2 + 2;
+	strcat = malloc(len * sizeof(char));
+	if (strcat == NULL)
 		return (NULL);
 	for (i = 0; i < len1; i++)
-		newstring[i] = strc1[i];
-	newstring[i] = '/';
+		strcat[i] = str1[i];
+	strcat[i] = '/';
 	for (j = 0; j < len2; j++)
-		newstring[i + 1 + j] = strc2[j];
-	newstring[len1 + len2 + 1] = '\0';
-	return (newstring);
-}
-
-/**
- * _strlen - the function that returns the length of a string
- * @str: the string to be measured
- * Return: the length of string
- */
-unsigned int _strlen(char *str)
-{
-	unsigned int len;
-
-	len = 0;
-
-	for (len = 0; str[len]; len++)
-		;
-	return (len);
+		strcat[i + 1 + j] = str2[j];
+	strcat[len1 + len2 + 1] = '\0';
+	return (strcat);
 }
