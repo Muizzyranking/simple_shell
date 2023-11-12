@@ -1,7 +1,7 @@
-#include "shell.h"
+#include "main.h"
 
 /**
- * print_error - function that prints error messages to standard error
+ * print_error - prints error messages to standard error
  * @vars: the pointer to struct of variables
  * @msg: the message to print out
  *
@@ -34,11 +34,11 @@ void print_error(vars_t *vars, char *msg)
  */
 void _puts2(char *str)
 {
-	ssize_t num, len;
+	ssize_t n, len;
 
-	num = _strlen(str);
-	len = write(STDERR_FILENO, str, num);
-	if (len != num)
+	n = _strlen(str);
+	len = write(STDERR_FILENO, str, n);
+	if (len != n)
 	{
 		perror("Fatal Error");
 		exit(1);
@@ -47,7 +47,7 @@ void _puts2(char *str)
 }
 
 /**
- * _uitoa - function that converts an unsigned int to a string
+ * _uitoa - converts an unsigned int to a string
  * @count: the unsigned int to convert
  *
  * Return: pointer to the converted string
@@ -55,11 +55,11 @@ void _puts2(char *str)
 char *_uitoa(unsigned int count)
 {
 	char *numstr;
-	unsigned int tmp, digits;
+	unsigned int temp, digits;
 
-	tmp = count;
-	for (digits = 0; tmp != 0; digits++)
-		tmp /= 10;
+	temp = count;
+	for (digits = 0; temp != 0; digits++)
+		temp /= 10;
 	numstr = malloc(sizeof(char) * (digits + 1));
 	if (numstr == NULL)
 	{
