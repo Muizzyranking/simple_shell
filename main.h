@@ -1,5 +1,5 @@
-#ifndef _SHELL_H_
-#define _SHELL_H_
+#ifndef MAIN_H
+#define MAIN_H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -50,7 +50,7 @@ void free_env(char **env);
 ssize_t _puts(char *str);
 char *_strdup(char *strtodup);
 int _strcmpr(char *strcmp1, char *strcmp2);
-char *_strcat(char *strc1, char *strc2);
+char *_strcat(char *str1, char *str2);
 unsigned int _strlen(char *str);
 
 char **tokenize(char *buffer, char *delimiter);
@@ -60,8 +60,8 @@ char *new_strtok(char *str, const char *delim);
 void (*check_for_builtins(vars_t *vars))(vars_t *vars);
 void new_exit(vars_t *vars);
 void _env(vars_t *vars);
-void new_setenv(vars_t *vars);
-void new_unsetenv(vars_t *vars);
+void new_env(vars_t *vars);
+void unset_env(vars_t *vars);
 
 void add_key(vars_t *vars);
 char **find_key(char **env, char *key);
@@ -78,4 +78,4 @@ void print_error(vars_t *vars, char *msg);
 void _puts2(char *str);
 char *_uitoa(unsigned int count);
 
-#endif /* _SHELL_H_ */
+#endif /* MAIN_H */
