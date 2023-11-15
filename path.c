@@ -110,7 +110,7 @@ void check_for_path(vars_t *vars)
 		new_exit(vars);
 }
 /**
- * execute_cwd - the function that executes the command in the current working directory
+ * execute_cwd - executes the command in the current working directory
  * @vars: the pointer to struct of variables
  *
  * Return: 0 on success, 1 on failure
